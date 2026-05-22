@@ -629,5 +629,9 @@
         pointer-events: auto;
         overflow: visible;
     }
+    
+    .input-disclaimer {
+        display: none !important;
+    }
 }
 
