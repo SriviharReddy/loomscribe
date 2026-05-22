@@ -24,13 +24,43 @@
     display: flex;
     gap: 12px;
     background-color: var(--bg-input);
-    padding: 10px 12px 10px 24px;
+    padding: 10px 12px 10px 12px;
     border-radius: var(--border-radius-pill); /* Full M3 Pill Input */
     border: 1px solid var(--border-color);
     transition: var(--transition-m3);
     width: 100%;
     align-items: center;
     box-shadow: var(--shadow-m3-mid);
+}
+
+.toggle-config-btn {
+    background: transparent;
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: var(--border-radius-pill);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition-m3);
+    flex-shrink: 0;
+}
+
+.toggle-config-btn:hover {
+    color: var(--accent-color);
+    background-color: rgba(255, 255, 255, 0.04);
+}
+
+.toggle-config-btn.active {
+    color: var(--accent-color);
+    background-color: rgba(56, 189, 248, 0.1);
+}
+
+.toggle-config-btn svg {
+    width: 18px;
+    height: 18px;
 }
 
 #chat-form:focus-within {
@@ -138,6 +168,10 @@
     margin-left: 12px;
     align-self: flex-start;
     flex-wrap: wrap;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    max-height: 200px;
+    opacity: 1;
+    overflow: visible;
 }
 
 .model-select-wrapper {
@@ -572,5 +606,24 @@
 
 .thinking-toggle-btn.active .thinking-icon {
     color: #38bdf8;
+}
+
+/* Mobile-only Collapsible Chat Options */
+@media (max-width: 768px) {
+    .chat-config-row {
+        max-height: 0;
+        opacity: 0;
+        margin-bottom: 0;
+        pointer-events: none;
+        overflow: hidden;
+    }
+    
+    .chat-config-row.expanded {
+        max-height: 200px;
+        opacity: 1;
+        margin-bottom: 8px;
+        pointer-events: auto;
+        overflow: visible;
+    }
 }
 
