@@ -1392,7 +1392,6 @@ export async function streamApiResponse({ conversationId, parentMsgId, stopAfter
         if (sendBtn) sendBtn.classList.remove('hidden');
         if (userInput) {
             userInput.disabled = false;
-            userInput.focus();
         }
         await updateContinueButtonVisibility();
     }

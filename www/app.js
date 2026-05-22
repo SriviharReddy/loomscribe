@@ -90,6 +90,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Toggle options row (model/prompt select) visibility on mobile
+    const toggleConfigBtn = document.getElementById('toggle-config-btn');
+    const chatConfigRow = document.querySelector('.chat-config-row');
+    if (toggleConfigBtn && chatConfigRow) {
+        toggleConfigBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            chatConfigRow.classList.toggle('expanded');
+            toggleConfigBtn.classList.toggle('active');
+        });
+    }
+
     // Toggle model dropdown menu
     if (modelSelectBtn && modelDropdownMenu) {
         modelSelectBtn.addEventListener('click', (e) => {
@@ -525,7 +536,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (sendBtn) sendBtn.classList.remove('hidden');
             if (userInput) {
                 userInput.disabled = false;
-                userInput.focus();
             }
             updateContinueButtonVisibility();
         });
