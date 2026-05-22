@@ -3,7 +3,10 @@ name: Build Android APK
 on:
   push:
     branches:
-      - '**' # Matches every branch
+      - feature/android-serverless-port
+      - feature/android-private
+    tags:
+      - 'v*'
 
 jobs:
   build:
@@ -61,10 +64,10 @@ jobs:
             VibeChat Standalone Serverless Android App (Capacitor Native APK).
             
             ### Highlights:
-            - 100% Serverless, runs entirely client-side in standard browser storage (IndexedDB).
-            - Direct DeepSeek stream completions directly from the WebView.
-            - Built-in prompt card libraries and md prompt importer.
-            - Fluid collapsible settings drawer on mobile viewports.
+            - 100% Serverless — runs entirely client-side using IndexedDB. No server required.
+            - Streams directly from the DeepSeek API. Your key never leaves your device.
+            - Import your own system prompt cards via the in-app file picker.
+            - Collapsible settings drawer for comfortable one-handed mobile use.
           prerelease: true
           draft: false
         env:
