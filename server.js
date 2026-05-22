@@ -4,7 +4,7 @@ const path = require('path');
 const { handleApiRoutes } = require('./src/server/routes');
 
 const PORT = process.env.PORT || 3000;
-const ROOT = __dirname;
+const ROOT = path.join(__dirname, 'www');
 
 const MIME = {
     '.html': 'text/html; charset=utf-8',
