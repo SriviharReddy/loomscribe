@@ -1,3 +1,4 @@
+import './js/db.js';
 import { state, getSystemPromptContentSync } from './js/state.js';
 import { loadFactoryPrompts, autoTitleConversation } from './js/api.js';
 import {
@@ -406,6 +407,51 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 await loadConversations();
             }
+        });
+    }
+
+    // Prompt Import button and input
+    const promptImportBtn = document.getElementById('prompt-import-btn');
+    const promptImportFile = document.getElementById('prompt-import-file');
+
+    if (promptImportBtn && promptImportFile) {
+        promptImportBtn.addEventListener('click', () => {
+            promptImportFile.click();
+        });
+
+        promptImportFile.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const text = event.target.result;
+                const firstLine = text.split('\n')[0].trim();
+                const nameMatch = firstLine.match(/^#\s+System Prompt:\s+(.+)/i) || firstLine.match(/^#\s+(.+)/);
+                
+                let extractedName = file.name.replace(/\.[^/.]+$/, "").replace(/_sys_prompt$/, "").replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+                if (nameMatch) {
+                    extractedName = nameMatch[1].trim();
+                }
+
+                let extractedCategory = 'Story Writing';
+                
+                let content = text.trim();
+                const lines = content.split('\n');
+                if (lines.length > 0 && lines[0].trim().startsWith('# ')) {
+                    lines.shift();
+                    if (lines[0] && lines[0].trim() === '---') lines.shift();
+                    if (lines[0] && lines[0].trim() === '') lines.shift();
+                    content = lines.join('\n').trim();
+                }
+
+                if (promptNameInput) promptNameInput.value = extractedName;
+                if (promptCategoryInput) promptCategoryInput.value = extractedCategory;
+                if (promptContentInput) promptContentInput.value = content;
+                
+                promptImportFile.value = '';
+            };
+            reader.readAsText(file);
         });
     }
 

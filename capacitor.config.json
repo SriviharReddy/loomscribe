@@ -1,0 +1,11 @@
+{
+  "appId": "com.vibechat.app",
+  "appName": "VibeChat",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https",
+    "allowNavigation": [
+      "api.deepseek.com"
+    ]
+  }
+}
