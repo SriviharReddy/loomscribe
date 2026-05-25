@@ -1,6 +1,6 @@
 {
   "appId": "com.vibechat.app",
-  "appName": "VibeChat",
+  "appName": "LoomScribe",
   "webDir": "www",
   "server": {
     "androidScheme": "https",
