@@ -25,7 +25,7 @@
 }
 
 .sidebar-header {
-    padding: 24px 20px;
+    padding: calc(24px + env(safe-area-inset-top)) 20px 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -348,12 +348,14 @@
 
 /* Top bar header */
 .chat-header {
-    height: 64px;
+    height: calc(64px + env(safe-area-inset-top));
+    padding-top: env(safe-area-inset-top);
     background-color: transparent; /* Seamless top header */
     border-bottom: 1px solid var(--border-color);
     display: flex;
     align-items: center;
-    padding: 0 24px;
+    padding-left: 24px;
+    padding-right: 24px;
     justify-content: space-between;
     z-index: 50;
 }
