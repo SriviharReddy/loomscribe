@@ -283,7 +283,7 @@ window.fetch = async function (input, init) {
         // POST /api/user-prompts
         if (pathname === '/api/user-prompts' && init && (init.method === 'POST' || init.method === 'post')) {
             const body = JSON.parse(init.body);
-            const id = body.id ? parseInt(body.id, 10) : Date.now();
+            const id = body.id ? parseInt(body.id, 10) : Date.now() * 1000 + Math.floor(Math.random() * 1000);
             const record = {
                 id,
                 name: body.name,
