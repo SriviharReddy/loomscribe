@@ -164,12 +164,15 @@ export async function autoTitleConversation(convId, promptText) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ title })
     });
+
+    syncConversationTitleInUI(convId, title);
 }
 
 function buildAutoTitle(promptText) {
     if (!promptText) return null;
 
     const cleaned = promptText
+        .replace(/\[[^\]]*\]/g, ' ')
         .replace(/```[\s\S]*?```/g, ' ')
         .replace(/[*_`>#\[\]()]/g, ' ')
         .replace(/\s+/g, ' ')
@@ -245,4 +248,15 @@ function buildAutoTitle(promptText) {
     }
 
     return title || null;
+}
+
+function syncConversationTitleInUI(convId, title) {
+    const item = document.querySelector(`.chat-list-item[data-id="${convId}"]`);
+    if (!item) return;
+
+    item.title = title;
+    const titleNode = item.querySelector('.chat-item-title');
+    if (titleNode) {
+        titleNode.textContent = title;
+    }
 }
