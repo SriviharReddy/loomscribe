@@ -142,114 +142,134 @@ function compilePrompt({ presetId, params, blockOverrides, directorNote }) {
     };
 
     // Stage 6: Apply parameter-to-block mapping rules (system-slot params only)
-    // POV mapping
-    if (validParams.pov === 'third') {
-        forceState('pov_third', true);
-        forceState('pov_first', false);
-        forceState('pov_author', false);
-    } else if (validParams.pov === 'first') {
-        forceState('pov_first', true);
-        forceState('pov_third', false);
-        forceState('pov_author', false);
-    } else if (validParams.pov === 'author') {
-        forceState('pov_author', true);
-        forceState('pov_third', false);
-        forceState('pov_first', false);
-    }
+    if (validParams.outline_mode === true) {
+        forceState('outline_mode', true);
+        
+        // Force disable all prose/narrative blocks
+        const blocksToDisable = [
+            'pov_third', 'pov_first', 'pov_author',
+            'pacing_slow', 'pacing_urgent',
+            'prose_grounded', 'prose_intimate', 'prose_pulp',
+            'erotic_romantic', 'erotic_sensual', 'explicit', 'erotic_hardcore',
+            'dirty_talk_none', 'dirty_talk_teasing', 'dirty_talk_filthy', 'dirty_talk_degrading',
+            'focus_balanced', 'focus_self', 'focus_partner',
+            'internal_monologue'
+        ];
+        for (const blockId of blocksToDisable) {
+            forceState(blockId, false);
+        }
+    } else {
+        forceState('outline_mode', false);
+        
+        // POV mapping
+        if (validParams.pov === 'third') {
+            forceState('pov_third', true);
+            forceState('pov_first', false);
+            forceState('pov_author', false);
+        } else if (validParams.pov === 'first') {
+            forceState('pov_first', true);
+            forceState('pov_third', false);
+            forceState('pov_author', false);
+        } else if (validParams.pov === 'author') {
+            forceState('pov_author', true);
+            forceState('pov_third', false);
+            forceState('pov_first', false);
+        }
 
-    // Pacing mapping
-    if (validParams.pacing <= 2) {
-        forceState('pacing_slow', true);
-        forceState('pacing_urgent', false);
-    } else if (validParams.pacing === 3) {
-        forceState('pacing_slow', false);
-        forceState('pacing_urgent', false);
-    } else if (validParams.pacing >= 4) {
-        forceState('pacing_urgent', true);
-        forceState('pacing_slow', false);
-    }
+        // Pacing mapping
+        if (validParams.pacing <= 2) {
+            forceState('pacing_slow', true);
+            forceState('pacing_urgent', false);
+        } else if (validParams.pacing === 3) {
+            forceState('pacing_slow', false);
+            forceState('pacing_urgent', false);
+        } else if (validParams.pacing >= 4) {
+            forceState('pacing_urgent', true);
+            forceState('pacing_slow', false);
+        }
 
-    // Erotic intensity mapping
-    if (validParams.erotic_intensity === 'romantic') {
-        forceState('erotic_romantic', true);
-        forceState('erotic_sensual', false);
-        forceState('explicit', false);
-        forceState('erotic_hardcore', false);
-    } else if (validParams.erotic_intensity === 'sensual') {
-        forceState('erotic_sensual', true);
-        forceState('erotic_romantic', false);
-        forceState('explicit', false);
-        forceState('erotic_hardcore', false);
-    } else if (validParams.erotic_intensity === 'explicit') {
-        forceState('explicit', true);
-        forceState('erotic_romantic', false);
-        forceState('erotic_sensual', false);
-        forceState('erotic_hardcore', false);
-    } else if (validParams.erotic_intensity === 'hardcore') {
-        forceState('erotic_hardcore', true);
-        forceState('erotic_romantic', false);
-        forceState('erotic_sensual', false);
-        forceState('explicit', false);
-    }
+        // Erotic intensity mapping
+        if (validParams.erotic_intensity === 'romantic') {
+            forceState('erotic_romantic', true);
+            forceState('erotic_sensual', false);
+            forceState('explicit', false);
+            forceState('erotic_hardcore', false);
+        } else if (validParams.erotic_intensity === 'sensual') {
+            forceState('erotic_sensual', true);
+            forceState('erotic_romantic', false);
+            forceState('explicit', false);
+            forceState('erotic_hardcore', false);
+        } else if (validParams.erotic_intensity === 'explicit') {
+            forceState('explicit', true);
+            forceState('erotic_romantic', false);
+            forceState('erotic_sensual', false);
+            forceState('erotic_hardcore', false);
+        } else if (validParams.erotic_intensity === 'hardcore') {
+            forceState('erotic_hardcore', true);
+            forceState('erotic_romantic', false);
+            forceState('erotic_sensual', false);
+            forceState('explicit', false);
+        }
 
-    // Dirty talk mapping
-    if (validParams.dirty_talk === 'none') {
-        forceState('dirty_talk_none', true);
-        forceState('dirty_talk_teasing', false);
-        forceState('dirty_talk_filthy', false);
-        forceState('dirty_talk_degrading', false);
-    } else if (validParams.dirty_talk === 'teasing') {
-        forceState('dirty_talk_teasing', true);
-        forceState('dirty_talk_none', false);
-        forceState('dirty_talk_filthy', false);
-        forceState('dirty_talk_degrading', false);
-    } else if (validParams.dirty_talk === 'filthy') {
-        forceState('dirty_talk_filthy', true);
-        forceState('dirty_talk_none', false);
-        forceState('dirty_talk_teasing', false);
-        forceState('dirty_talk_degrading', false);
-    } else if (validParams.dirty_talk === 'dominant_degrading') {
-        forceState('dirty_talk_degrading', true);
-        forceState('dirty_talk_none', false);
-        forceState('dirty_talk_teasing', false);
-        forceState('dirty_talk_filthy', false);
-    }
+        // Dirty talk mapping
+        if (validParams.dirty_talk === 'none') {
+            forceState('dirty_talk_none', true);
+            forceState('dirty_talk_teasing', false);
+            forceState('dirty_talk_filthy', false);
+            forceState('dirty_talk_degrading', false);
+        } else if (validParams.dirty_talk === 'teasing') {
+            forceState('dirty_talk_teasing', true);
+            forceState('dirty_talk_none', false);
+            forceState('dirty_talk_filthy', false);
+            forceState('dirty_talk_degrading', false);
+        } else if (validParams.dirty_talk === 'filthy') {
+            forceState('dirty_talk_filthy', true);
+            forceState('dirty_talk_none', false);
+            forceState('dirty_talk_teasing', false);
+            forceState('dirty_talk_degrading', false);
+        } else if (validParams.dirty_talk === 'dominant_degrading') {
+            forceState('dirty_talk_degrading', true);
+            forceState('dirty_talk_none', false);
+            forceState('dirty_talk_teasing', false);
+            forceState('dirty_talk_filthy', false);
+        }
 
-    // POV focus mapping
-    if (validParams.pov_focus === 'balanced') {
-        forceState('focus_balanced', true);
-        forceState('focus_self', false);
-        forceState('focus_partner', false);
-    } else if (validParams.pov_focus === 'self') {
-        forceState('focus_self', true);
-        forceState('focus_balanced', false);
-        forceState('focus_partner', false);
-    } else if (validParams.pov_focus === 'partner') {
-        forceState('focus_partner', true);
-        forceState('focus_balanced', false);
-        forceState('focus_self', false);
-    }
+        // POV focus mapping
+        if (validParams.pov_focus === 'balanced') {
+            forceState('focus_balanced', true);
+            forceState('focus_self', false);
+            forceState('focus_partner', false);
+        } else if (validParams.pov_focus === 'self') {
+            forceState('focus_self', true);
+            forceState('focus_balanced', false);
+            forceState('focus_partner', false);
+        } else if (validParams.pov_focus === 'partner') {
+            forceState('focus_partner', true);
+            forceState('focus_balanced', false);
+            forceState('focus_self', false);
+        }
 
-    // Internal monologue mapping
-    if (validParams.internal_mono === true) {
-        forceState('internal_monologue', true);
-    } else if (validParams.internal_mono === false) {
-        forceState('internal_monologue', false);
-    }
+        // Internal monologue mapping
+        if (validParams.internal_mono === true) {
+            forceState('internal_monologue', true);
+        } else if (validParams.internal_mono === false) {
+            forceState('internal_monologue', false);
+        }
 
-    // Prose style mapping
-    if (validParams.prose_style === 'grounded') {
-        forceState('prose_grounded', true);
-        forceState('prose_intimate', false);
-        forceState('prose_pulp', false);
-    } else if (validParams.prose_style === 'intimate') {
-        forceState('prose_intimate', true);
-        forceState('prose_grounded', false);
-        forceState('prose_pulp', false);
-    } else if (validParams.prose_style === 'pulp') {
-        forceState('prose_pulp', true);
-        forceState('prose_grounded', false);
-        forceState('prose_intimate', false);
+        // Prose style mapping
+        if (validParams.prose_style === 'grounded') {
+            forceState('prose_grounded', true);
+            forceState('prose_intimate', false);
+            forceState('prose_pulp', false);
+        } else if (validParams.prose_style === 'intimate') {
+            forceState('prose_intimate', true);
+            forceState('prose_grounded', false);
+            forceState('prose_pulp', false);
+        } else if (validParams.prose_style === 'pulp') {
+            forceState('prose_pulp', true);
+            forceState('prose_grounded', false);
+            forceState('prose_intimate', false);
+        }
     }
 
     // Stage 7: Apply manual overrides (always wins)
@@ -320,7 +340,10 @@ function compilePrompt({ presetId, params, blockOverrides, directorNote }) {
         postParts.push(preset.post_history_body.trim());
     }
 
-    // Always append the word count instruction
+    // Always append the word count instruction, but add outlining directives if in Outline Mode
+    if (validParams.outline_mode === true) {
+        postParts.push("Write a structured outline, plot points, or brainstorm ideas based on the user's prompt. Do not write full-narrative prose chapters. Keep the format organized, using bullet points or numbered lists where appropriate.");
+    }
     const wordCount = validParams.word_count;
     postParts.push(`Write approximately ${wordCount} words.`);
 

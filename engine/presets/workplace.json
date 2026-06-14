@@ -86,6 +86,7 @@
     "erotic_intensity": "explicit",
     "dirty_talk": "teasing",
     "pov_focus": "balanced",
-    "pushback": 3
+    "pushback": 3,
+    "outline_mode": false
   }
 }
