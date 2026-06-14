@@ -33,11 +33,49 @@
     "slot": "system"
   },
   {
-    "id": "explicit",
-    "label": "Explicit Content",
-    "type": "toggle",
-    "default": true,
+    "id": "erotic_intensity",
+    "label": "Erotic Intensity",
+    "type": "select",
+    "options": [
+      { "value": "romantic", "label": "Romantic" },
+      { "value": "sensual",  "label": "Sensual" },
+      { "value": "explicit", "label": "Explicit" },
+      { "value": "hardcore", "label": "Hardcore" }
+    ],
+    "default": "explicit",
     "slot": "system"
+  },
+  {
+    "id": "dirty_talk",
+    "label": "Dirty Talk Style",
+    "type": "select",
+    "options": [
+      { "value": "none",               "label": "Silent Intimacy" },
+      { "value": "teasing",            "label": "Teasing & Playful" },
+      { "value": "filthy",             "label": "Filthy & Vulgar" },
+      { "value": "dominant_degrading", "label": "Dominance & Degradation" }
+    ],
+    "default": "teasing",
+    "slot": "system"
+  },
+  {
+    "id": "pov_focus",
+    "label": "POV Focus Spotlight",
+    "type": "select",
+    "options": [
+      { "value": "balanced", "label": "Balanced" },
+      { "value": "self",     "label": "POV Interiority" },
+      { "value": "partner",  "label": "Partner Reaction" }
+    ],
+    "default": "balanced",
+    "slot": "system"
+  },
+  {
+    "id": "complication_generator",
+    "label": "Complication Generator",
+    "type": "toggle",
+    "default": false,
+    "slot": "post_history"
   },
   {
     "id": "internal_mono",

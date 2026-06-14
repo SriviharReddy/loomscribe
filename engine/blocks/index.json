@@ -35,11 +35,60 @@
     "order": 32
   },
   {
-    "id": "explicit",
-    "title": "Explicit Content",
-    "file": "explicit.md",
-    "group": "content",
+    "id": "erotic_romantic",
+    "title": "Erotic — Romantic",
+    "file": "erotic_romantic.md",
+    "group": "erotic_intensity",
     "order": 40
+  },
+  {
+    "id": "erotic_sensual",
+    "title": "Erotic — Sensual",
+    "file": "erotic_sensual.md",
+    "group": "erotic_intensity",
+    "order": 41
+  },
+  {
+    "id": "explicit",
+    "title": "Erotic — Explicit",
+    "file": "explicit.md",
+    "group": "erotic_intensity",
+    "order": 42
+  },
+  {
+    "id": "erotic_hardcore",
+    "title": "Erotic — Hardcore",
+    "file": "erotic_hardcore.md",
+    "group": "erotic_intensity",
+    "order": 43
+  },
+  {
+    "id": "dirty_talk_none",
+    "title": "Dirty Talk — Silent",
+    "file": "dirty_talk_none.md",
+    "group": "dirty_talk",
+    "order": 44
+  },
+  {
+    "id": "dirty_talk_teasing",
+    "title": "Dirty Talk — Teasing",
+    "file": "dirty_talk_teasing.md",
+    "group": "dirty_talk",
+    "order": 45
+  },
+  {
+    "id": "dirty_talk_filthy",
+    "title": "Dirty Talk — Filthy",
+    "file": "dirty_talk_filthy.md",
+    "group": "dirty_talk",
+    "order": 46
+  },
+  {
+    "id": "dirty_talk_degrading",
+    "title": "Dirty Talk — Degrading",
+    "file": "dirty_talk_degrading.md",
+    "group": "dirty_talk",
+    "order": 47
   },
   {
     "id": "format_rules",
@@ -82,6 +131,27 @@
     "file": "pov_author.md",
     "group": "pov",
     "order": 82
+  },
+  {
+    "id": "focus_balanced",
+    "title": "POV Focus — Balanced",
+    "file": "focus_balanced.md",
+    "group": "pov_focus",
+    "order": 83
+  },
+  {
+    "id": "focus_self",
+    "title": "POV Focus — Self",
+    "file": "focus_self.md",
+    "group": "pov_focus",
+    "order": 84
+  },
+  {
+    "id": "focus_partner",
+    "title": "POV Focus — Partner",
+    "file": "focus_partner.md",
+    "group": "pov_focus",
+    "order": 85
   },
   {
     "id": "pacing_slow",

@@ -109,10 +109,29 @@ function compilePrompt({ presetId, params, blockOverrides, directorNote }) {
         }
     }
 
-    // Stage 5: Start with preset blocks array
+    // Stage 5: Start with registry blocks as baseline
+    let registry;
+    try {
+        registry = JSON.parse(fs.readFileSync(REGISTRY_PATH, 'utf-8'));
+    } catch (err) {
+        throw new Error('Failed to load block registry index.json');
+    }
+
     const blockState = {};
-    for (const b of (preset.blocks || [])) {
-        blockState[b.id] = { enabled: !!b.enabled, order: b.order };
+    for (const entry of registry) {
+        blockState[entry.id] = { enabled: false, order: entry.order };
+    }
+
+    // Overlay preset block overrides if any are defined
+    if (preset.blocks && Array.isArray(preset.blocks)) {
+        for (const b of preset.blocks) {
+            if (blockState[b.id] !== undefined) {
+                blockState[b.id].enabled = !!b.enabled;
+                if (b.order !== undefined) {
+                    blockState[b.id].order = b.order;
+                }
+            }
+        }
     }
 
     // Helper for applying rules safely
@@ -150,11 +169,65 @@ function compilePrompt({ presetId, params, blockOverrides, directorNote }) {
         forceState('pacing_slow', false);
     }
 
-    // Explicit mapping
-    if (validParams.explicit === true) {
-        forceState('explicit', true);
-    } else if (validParams.explicit === false) {
+    // Erotic intensity mapping
+    if (validParams.erotic_intensity === 'romantic') {
+        forceState('erotic_romantic', true);
+        forceState('erotic_sensual', false);
         forceState('explicit', false);
+        forceState('erotic_hardcore', false);
+    } else if (validParams.erotic_intensity === 'sensual') {
+        forceState('erotic_sensual', true);
+        forceState('erotic_romantic', false);
+        forceState('explicit', false);
+        forceState('erotic_hardcore', false);
+    } else if (validParams.erotic_intensity === 'explicit') {
+        forceState('explicit', true);
+        forceState('erotic_romantic', false);
+        forceState('erotic_sensual', false);
+        forceState('erotic_hardcore', false);
+    } else if (validParams.erotic_intensity === 'hardcore') {
+        forceState('erotic_hardcore', true);
+        forceState('erotic_romantic', false);
+        forceState('erotic_sensual', false);
+        forceState('explicit', false);
+    }
+
+    // Dirty talk mapping
+    if (validParams.dirty_talk === 'none') {
+        forceState('dirty_talk_none', true);
+        forceState('dirty_talk_teasing', false);
+        forceState('dirty_talk_filthy', false);
+        forceState('dirty_talk_degrading', false);
+    } else if (validParams.dirty_talk === 'teasing') {
+        forceState('dirty_talk_teasing', true);
+        forceState('dirty_talk_none', false);
+        forceState('dirty_talk_filthy', false);
+        forceState('dirty_talk_degrading', false);
+    } else if (validParams.dirty_talk === 'filthy') {
+        forceState('dirty_talk_filthy', true);
+        forceState('dirty_talk_none', false);
+        forceState('dirty_talk_teasing', false);
+        forceState('dirty_talk_degrading', false);
+    } else if (validParams.dirty_talk === 'dominant_degrading') {
+        forceState('dirty_talk_degrading', true);
+        forceState('dirty_talk_none', false);
+        forceState('dirty_talk_teasing', false);
+        forceState('dirty_talk_filthy', false);
+    }
+
+    // POV focus mapping
+    if (validParams.pov_focus === 'balanced') {
+        forceState('focus_balanced', true);
+        forceState('focus_self', false);
+        forceState('focus_partner', false);
+    } else if (validParams.pov_focus === 'self') {
+        forceState('focus_self', true);
+        forceState('focus_balanced', false);
+        forceState('focus_partner', false);
+    } else if (validParams.pov_focus === 'partner') {
+        forceState('focus_partner', true);
+        forceState('focus_balanced', false);
+        forceState('focus_self', false);
     }
 
     // Internal monologue mapping
@@ -195,13 +268,6 @@ function compilePrompt({ presetId, params, blockOverrides, directorNote }) {
         .sort((a, b) => a.order - b.order);
 
     // Stage 9: Load each block's markdown file
-    let registry;
-    try {
-        registry = JSON.parse(fs.readFileSync(REGISTRY_PATH, 'utf-8'));
-    } catch (err) {
-        throw new Error('Failed to load block registry index.json');
-    }
-
     const blockRegistryMap = {};
     for (const entry of registry) {
         blockRegistryMap[entry.id] = entry;
@@ -257,6 +323,11 @@ function compilePrompt({ presetId, params, blockOverrides, directorNote }) {
     // Always append the word count instruction
     const wordCount = validParams.word_count;
     postParts.push(`Write approximately ${wordCount} words.`);
+
+    // If complication_generator is enabled, append the complication instruction
+    if (validParams.complication_generator === true) {
+        postParts.push("Introduce a minor immediate complication, hesitation, or external distraction (e.g., a sudden sound, a flash of guilt, a boundary hesitation, or a realization) to disrupt the smooth flow of the scene.");
+    }
 
     // If directorNote is non-empty, append it
     if (directorNote && directorNote.trim()) {
