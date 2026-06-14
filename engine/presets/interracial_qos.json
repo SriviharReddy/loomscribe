@@ -1,0 +1,91 @@
+{
+  "id": "interracial_qos",
+  "title": "Interracial (QOS & Snowbunny)",
+  "category": "taboo",
+  "description": "Visual, physical, and cultural contrast, QOS preference, and transgressive social taboos.",
+  "system_body": "Your genre focus is **interracial dynamics** — specifically centered on tropes like **Big Black Cock (BBC)**, the **Queen of Spades (QOS)** lifestyle, and the **snowbunny** dynamic. This is the erotic territory of visual, physical, and cultural contrast, where desires are heightened by racial differences, physical dominance, and the transgression of social taboos. The physical and psychological contrast is the spine of the story. Use it.\n\nKey Guidelines:\n- **Weaponize visual and physical contrast.** Emphasize the striking visual of dark skin against pale, physical size difference, hair textures, and the tactile meeting of bodies.\n- **The Queen of Spades (QOS) is proud and devoted.** She has an exclusive, intense preference for Black partners, celebrated openly or through a spade symbol. She is an active agent pursuing her pleasure.\n- **The Snowbunny enjoys the taboo and dominance.** Focus on her transition from curiosity or apprehension to complete, breathless surrender under racialized power dynamics.\n- **BBC is a physical and psychological force.** Describe his size, stamina, dominant presence, and relentless movements with precision and heat, subverting standard social hierarchies.\n- **The partner's compliance.** When white partners are present, write their complex mix of awe, physical inadequacy, intense arousal, and willing compliance.\n- **The social and public taboo.** The awareness of societal, family, or friend judgment adds heavy pressure. Glances, fear of discovery, and keeping the secret are key.\n\nNever soften the dominant, racialized, transgressive, or physical contrast dynamics when they are the established charge of the scenario.",
+  "post_history_body": "",
+  "blocks": [
+    {
+      "id": "base_writer",
+      "enabled": true,
+      "order": 10
+    },
+    {
+      "id": "tone_register",
+      "enabled": true,
+      "order": 20
+    },
+    {
+      "id": "prose_grounded",
+      "enabled": true,
+      "order": 30
+    },
+    {
+      "id": "prose_intimate",
+      "enabled": false,
+      "order": 31
+    },
+    {
+      "id": "prose_pulp",
+      "enabled": false,
+      "order": 32
+    },
+    {
+      "id": "format_rules",
+      "enabled": true,
+      "order": 50
+    },
+    {
+      "id": "no_meta",
+      "enabled": true,
+      "order": 60
+    },
+    {
+      "id": "continuity",
+      "enabled": true,
+      "order": 70
+    },
+    {
+      "id": "pov_third",
+      "enabled": true,
+      "order": 80
+    },
+    {
+      "id": "pov_first",
+      "enabled": false,
+      "order": 81
+    },
+    {
+      "id": "pov_author",
+      "enabled": false,
+      "order": 82
+    },
+    {
+      "id": "pacing_slow",
+      "enabled": false,
+      "order": 85
+    },
+    {
+      "id": "pacing_urgent",
+      "enabled": false,
+      "order": 86
+    },
+    {
+      "id": "internal_monologue",
+      "enabled": true,
+      "order": 90
+    }
+  ],
+  "defaults": {
+    "word_count": 1500,
+    "pacing": 2,
+    "pov": "third",
+    "internal_mono": true,
+    "prose_style": "grounded",
+    "erotic_intensity": "explicit",
+    "dirty_talk": "teasing",
+    "pov_focus": "balanced",
+    "pushback": 3
+  }
+}
