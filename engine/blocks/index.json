@@ -18,56 +18,56 @@
     "title": "Erotic — Romantic",
     "file": "erotic_romantic.md",
     "group": "erotic_intensity",
-    "order": 40
+    "order": 65
   },
   {
     "id": "erotic_sensual",
     "title": "Erotic — Sensual",
     "file": "erotic_sensual.md",
     "group": "erotic_intensity",
-    "order": 41
+    "order": 66
   },
   {
     "id": "explicit",
     "title": "Erotic — Explicit",
     "file": "explicit.md",
     "group": "erotic_intensity",
-    "order": 42
+    "order": 67
   },
   {
     "id": "erotic_hardcore",
     "title": "Erotic — Hardcore",
     "file": "erotic_hardcore.md",
     "group": "erotic_intensity",
-    "order": 43
+    "order": 68
   },
   {
     "id": "dirty_talk_none",
     "title": "Dirty Talk — Silent",
     "file": "dirty_talk_none.md",
     "group": "dirty_talk",
-    "order": 44
+    "order": 69
   },
   {
     "id": "dirty_talk_teasing",
     "title": "Dirty Talk — Teasing",
     "file": "dirty_talk_teasing.md",
     "group": "dirty_talk",
-    "order": 45
+    "order": 70
   },
   {
     "id": "dirty_talk_filthy",
     "title": "Dirty Talk — Filthy",
     "file": "dirty_talk_filthy.md",
     "group": "dirty_talk",
-    "order": 46
+    "order": 71
   },
   {
     "id": "dirty_talk_degrading",
     "title": "Dirty Talk — Degrading",
     "file": "dirty_talk_degrading.md",
     "group": "dirty_talk",
-    "order": 47
+    "order": 72
   },
   {
     "id": "format_rules",
@@ -88,7 +88,7 @@
     "title": "Continuity",
     "file": "continuity.md",
     "group": "core",
-    "order": 70
+    "order": 73
   },
   {
     "id": "pov_third",
