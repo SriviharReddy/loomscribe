@@ -686,8 +686,6 @@ function getDefaultBlocks() {
         { id: 'base_writer',  enabled: true,  order: 10 },
         { id: 'tone_register', enabled: true,  order: 20 },
         { id: 'format_rules', enabled: true,  order: 50 },
-        { id: 'no_meta',      enabled: true,  order: 60 },
-        { id: 'continuity',   enabled: true,  order: 70 },
         { id: 'pov_third',    enabled: true,  order: 80 },
         { id: 'pov_first',    enabled: false, order: 81 },
         { id: 'pov_author',   enabled: false, order: 82 },

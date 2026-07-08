@@ -59,8 +59,6 @@ engine/
 │   ├── base_writer.md      # Core writer instructions
 │   ├── tone_register.md    # Baseline prose styling rules
 │   ├── format_rules.md     # Layout, markdown, and token controls
-│   ├── no_meta.md          # Disables out-of-character AI chatter
-│   ├── continuity.md       # Memory coherence guidelines
 │   ├── outline_mode.md     # Structural outline directives
 │   ├── premises_mode.md    # Six-premise brainstorming directives
 │   ├── pov_*.md            # Close Third, Deep First, Omniscient POV blocks
@@ -78,7 +76,7 @@ Individual prompt snippets are listed in `engine/blocks/index.json` and loaded f
 
 | Group | Member Blocks | Description / Compilation Rule |
 |---|---|---|
-| `core` | `base_writer`, `tone_register`, `format_rules`, `no_meta`, `continuity` | Always active in prose presets. |
+| `core` | `base_writer`, `tone_register`, `format_rules` | Always active in prose presets. |
 | `pov` | `pov_third`, `pov_first`, `pov_author` | Mutually exclusive. Enabled based on `pov`. |
 | `erotic_intensity` | `erotic_romantic`, `erotic_sensual`, `explicit`, `erotic_hardcore` | Mutually exclusive. Enabled based on `erotic_intensity`. |
 | `dirty_talk` | `dirty_talk_none`, `dirty_talk_teasing`, `dirty_talk_filthy`, `dirty_talk_degrading` | Mutually exclusive. Enabled based on `dirty_talk`. |

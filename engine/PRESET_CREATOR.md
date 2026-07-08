@@ -24,8 +24,6 @@ Emit exactly this structure, populated for the requested scenario:
     { "id": "base_writer",   "enabled": true,  "order": 10 },
     { "id": "tone_register", "enabled": true,  "order": 20 },
     { "id": "format_rules",  "enabled": true,  "order": 50 },
-    { "id": "no_meta",       "enabled": true,  "order": 60 },
-    { "id": "continuity",    "enabled": true,  "order": 70 },
     { "id": "pov_third",     "enabled": true,  "order": 80 },
     { "id": "pov_first",     "enabled": false, "order": 81 },
     { "id": "pov_author",    "enabled": false, "order": 82 }
@@ -56,7 +54,7 @@ Emit exactly this structure, populated for the requested scenario:
 
 **Do not write:**
 - General prose quality or tone directives — handled by `tone_register`.
-- Format, length, or layout instructions — handled by `format_rules` and `no_meta`.
+- Format, length, or layout instructions — handled by `format_rules`.
 - Basic AI identity or role framing — handled by `base_writer`.
 - POV mechanics — handled by `pov_third`, `pov_first`, `pov_author`.
 - Erotic register — handled by the erotic intensity and dirty talk block groups.

@@ -99,8 +99,6 @@ loomscribe-prompt-engine/
 │   │   ├── base_writer.md      # Core AI identity
 │   │   ├── tone_register.md    # Baseline prose standards
 │   │   ├── format_rules.md     # Layout constraints (no emojis, etc.)
-│   │   ├── no_meta.md          # Blocks out-of-character comments
-│   │   ├── continuity.md       # Memory retention guidelines
 │   │   ├── outline_mode.md     # Instructions for the brainstorming sandbox
 │   │   ├── premises_mode.md    # Instructions for six-premise generation
 │   │   ├── pov_*.md            # Point-of-view definitions (first, third, author)

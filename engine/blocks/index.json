@@ -77,20 +77,6 @@
     "order": 50
   },
   {
-    "id": "no_meta",
-    "title": "No Meta",
-    "file": "no_meta.md",
-    "group": "core",
-    "order": 60
-  },
-  {
-    "id": "continuity",
-    "title": "Continuity",
-    "file": "continuity.md",
-    "group": "core",
-    "order": 73
-  },
-  {
     "id": "pov_third",
     "title": "POV — Close Third",
     "file": "pov_third.md",

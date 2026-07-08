@@ -22,16 +22,6 @@
       "order": 50
     },
     {
-      "id": "no_meta",
-      "enabled": true,
-      "order": 60
-    },
-    {
-      "id": "continuity",
-      "enabled": true,
-      "order": 70
-    },
-    {
       "id": "pov_third",
       "enabled": true,
       "order": 80
