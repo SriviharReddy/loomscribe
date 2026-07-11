@@ -1,3 +1,4 @@
+﻿import { authFetch } from '../auth.js';
 import { state } from '../state.js';
 import { safeAsync } from './helpers.js';
 
@@ -97,7 +98,7 @@ export function initInputBar() {
             }
 
             // Save active model configuration globally on server
-            await fetch('/api/config', {
+            await authFetch('/api/config', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ activeModel: modelVal })
@@ -105,7 +106,7 @@ export function initInputBar() {
 
             // Save active model configuration for current conversation if active
             if (state.currentConversationId !== null) {
-                await fetch(`/api/conversations/${state.currentConversationId}`, {
+                await authFetch(`/api/conversations/${state.currentConversationId}`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ activeModel: modelVal })
@@ -131,7 +132,7 @@ export function initInputBar() {
             }
 
             // Save configuration globally on server
-            await fetch('/api/config', {
+            await authFetch('/api/config', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ thinkingMode: newMode })

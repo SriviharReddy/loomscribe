@@ -1,3 +1,4 @@
+﻿import { authFetch } from '../auth.js';
 import { state } from '../state.js';
 import { initializeModelUI } from './input.js';
 import { renderRightPane, clearPendingSave } from './right-pane.js';
@@ -19,7 +20,7 @@ export async function loadConversations() {
     const sidebar = document.getElementById('sidebar');
     if (!chatsList) return;
 
-    const res = await fetch('/api/conversations');
+    const res = await authFetch('/api/conversations');
     let conversations = [];
     if (res.ok) {
         conversations = await res.json();
@@ -125,7 +126,7 @@ export async function switchConversation(id) {
         }
     });
 
-    const cRes = await fetch(`/api/conversations/${id}`);
+    const cRes = await authFetch(`/api/conversations/${id}`);
     const conv = cRes.ok ? await cRes.json() : null;
 
     if (conv && conv.activeModel) {
@@ -136,7 +137,7 @@ export async function switchConversation(id) {
     clearPendingSave();
     await renderRightPane(conv);
 
-    const mRes = await fetch(`/api/messages?conversationId=${id}`);
+    const mRes = await authFetch(`/api/messages?conversationId=${id}`);
     const allMessages = mRes.ok ? await mRes.json() : [];
     allMessages.sort((a, b) => a.timestamp - b.timestamp);
     const activeMessages = allMessages.filter(m => m.isActive !== false);
@@ -230,7 +231,7 @@ export async function createNewConversation(title = 'New Chat', presetId = null)
         }
     }
 
-    const res = await fetch('/api/conversations', {
+    const res = await authFetch('/api/conversations', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -339,7 +340,7 @@ export function startInlineRename(item, titleSpan, id, currentTitle) {
             if (deleteBtn) deleteBtn.style.display = '';
             item.title = newTitle;
             
-            await fetch(`/api/conversations/${id}`, {
+            await authFetch(`/api/conversations/${id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ title: newTitle })

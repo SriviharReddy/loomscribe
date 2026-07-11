@@ -1,3 +1,4 @@
+﻿import { authFetch } from '../auth.js';
 import { state } from '../state.js';
 import { 
     getEngineSchema, 
@@ -58,7 +59,7 @@ function computeSignature(presetId, params, blockOverrides, schema) {
  */
 async function saveConversationSettings(convId, updateObj) {
     try {
-        const res = await fetch(`/api/conversations/${convId}`, {
+        const res = await authFetch(`/api/conversations/${convId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updateObj)
@@ -379,7 +380,7 @@ async function triggerPreviewCompile() {
 
     try {
         // Fetch current database conversation details to ensure perfect accuracy
-        const res = await fetch(`/api/conversations/${state.currentConversationId}`);
+        const res = await authFetch(`/api/conversations/${state.currentConversationId}`);
         if (!res.ok) throw new Error("Conversation not found");
         const conv = await res.json();
 

@@ -1,8 +1,10 @@
 const { WebSocketServer } = require('ws');
 const https = require('https');
+const url = require('url');
 const { readDb, writeDb } = require('./db');
 const { generateUniqueId } = require('./utils');
 const { compilePrompt } = require('../../engine/compiler');
+// Auth is required inline in the upgrade handler
 const logger = require('./logger');
 
 // Set of connected clients
@@ -15,6 +17,28 @@ function initWebSocketServer(server) {
     const wss = new WebSocketServer({ noServer: true });
 
     server.on('upgrade', (request, socket, head) => {
+        // Validate auth token from query string if APP_PASSWORD is set
+        if (process.env.APP_PASSWORD) {
+            const parsedUrl = url.parse(request.url, true);
+            const token = parsedUrl.query.token || '';
+            // Inline token check against the auth module's token store via a lightweight HTTP-style check
+            const authHeader = `Bearer ${token}`;
+            const fakeReq = { headers: { authorization: authHeader } };
+            const fakeRes = {
+                status: (code) => ({
+                    json: () => {
+                        socket.write('HTTP/1.1 401 Unauthorized\r\n\r\n');
+                        socket.destroy();
+                    }
+                })
+            };
+            let authorized = false;
+            const next = () => { authorized = true; };
+            // requireAuth is synchronous
+            const { requireAuth } = require('./endpoints/auth');
+            requireAuth(fakeReq, fakeRes, next);
+            if (!authorized) return;
+        }
         wss.handleUpgrade(request, socket, head, (ws) => {
             wss.emit('connection', ws, request);
         });
