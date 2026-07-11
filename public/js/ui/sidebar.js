@@ -1,4 +1,4 @@
-﻿import { authFetch } from '../auth.js';
+import { authFetch } from '../auth.js';
 import { state } from '../state.js';
 import { initializeModelUI } from './input.js';
 import { renderRightPane, clearPendingSave } from './right-pane.js';
@@ -213,6 +213,12 @@ export async function switchConversation(id) {
     const sidebar = document.getElementById('sidebar');
     if (window.innerWidth <= 768 && sidebar) {
         sidebar.classList.remove('active');
+        const backdrop = document.getElementById('layout-backdrop');
+        if (backdrop) {
+            const rightPane = document.getElementById('right-pane');
+            const isRightActive = rightPane && rightPane.classList.contains('active');
+            if (!isRightActive) backdrop.classList.add('hidden');
+        }
     }
 }
 
@@ -291,6 +297,12 @@ export async function createNewConversation(title = 'New Chat', presetId = null)
     const sidebar = document.getElementById('sidebar');
     if (window.innerWidth <= 768 && sidebar) {
         sidebar.classList.remove('active');
+        const backdrop = document.getElementById('layout-backdrop');
+        if (backdrop) {
+            const rightPane = document.getElementById('right-pane');
+            const isRightActive = rightPane && rightPane.classList.contains('active');
+            if (!isRightActive) backdrop.classList.add('hidden');
+        }
     }
 
     return newId;
@@ -375,17 +387,47 @@ export function initSidebar() {
     const sidebar = document.getElementById('sidebar');
     const sidebarToggleBtn = document.getElementById('sidebar-toggle-btn');
     const sidebarCloseBtn = document.getElementById('sidebar-close-btn');
+    const backdrop = document.getElementById('layout-backdrop');
+
+    const updateBackdrop = () => {
+        if (!backdrop) return;
+        const rightPane = document.getElementById('right-pane');
+        const isRightActive = rightPane && rightPane.classList.contains('active');
+        const isSidebarActive = sidebar && sidebar.classList.contains('active');
+        if (isRightActive || isSidebarActive) {
+            backdrop.classList.remove('hidden');
+        } else {
+            backdrop.classList.add('hidden');
+        }
+    };
 
     // Toggle Sidebar on mobile viewports
     if (sidebarToggleBtn && sidebar) {
         sidebarToggleBtn.addEventListener('click', () => {
             sidebar.classList.add('active');
+            // Ensure right-pane is closed when sidebar opens on mobile
+            const rightPane = document.getElementById('right-pane');
+            if (rightPane) {
+                rightPane.classList.add('collapsed');
+                rightPane.classList.remove('active');
+            }
+            updateBackdrop();
         });
     }
 
     if (sidebarCloseBtn && sidebar) {
         sidebarCloseBtn.addEventListener('click', () => {
             sidebar.classList.remove('active');
+            updateBackdrop();
+        });
+    }
+
+    if (backdrop) {
+        backdrop.addEventListener('click', () => {
+            if (sidebar) {
+                sidebar.classList.remove('active');
+            }
+            updateBackdrop();
         });
     }
 }
