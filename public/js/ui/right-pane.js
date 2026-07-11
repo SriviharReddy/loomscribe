@@ -1,4 +1,4 @@
-﻿import { authFetch } from '../auth.js';
+import { authFetch } from '../auth.js';
 import { state } from '../state.js';
 import { 
     getEngineSchema, 
@@ -96,11 +96,31 @@ export function initRightPane() {
     const resetOverridesBtn = document.getElementById('reset-overrides-btn');
     const activePresetIndicatorBtn = document.getElementById('active-preset-indicator-btn');
 
+    const updateBackdrop = () => {
+        const backdrop = document.getElementById('layout-backdrop');
+        if (!backdrop) return;
+        const sidebar = document.getElementById('sidebar');
+        const isSidebarActive = sidebar && sidebar.classList.contains('active');
+        const isRightActive = rightPane && rightPane.classList.contains('active');
+        if (isSidebarActive || isRightActive) {
+            backdrop.classList.remove('hidden');
+        } else {
+            backdrop.classList.add('hidden');
+        }
+    };
+
     // Toggle right pane
     if (rightPaneToggleBtn && rightPane) {
         rightPaneToggleBtn.addEventListener('click', () => {
             rightPane.classList.toggle('collapsed');
             rightPane.classList.toggle('active'); // mobile toggle
+            
+            if (rightPane.classList.contains('active')) {
+                // Ensure sidebar is closed when right pane opens on mobile
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar) sidebar.classList.remove('active');
+            }
+            updateBackdrop();
         });
     }
 
@@ -108,6 +128,7 @@ export function initRightPane() {
         rightPaneCloseBtn.addEventListener('click', () => {
             rightPane.classList.add('collapsed');
             rightPane.classList.remove('active');
+            updateBackdrop();
         });
     }
 
@@ -117,6 +138,24 @@ export function initRightPane() {
             e.stopPropagation();
             rightPane.classList.remove('collapsed');
             rightPane.classList.add('active');
+            
+            // Ensure sidebar is closed when right pane opens on mobile
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar) sidebar.classList.remove('active');
+            
+            updateBackdrop();
+        });
+    }
+
+    // Close right pane on backdrop click
+    const backdrop = document.getElementById('layout-backdrop');
+    if (backdrop) {
+        backdrop.addEventListener('click', () => {
+            if (rightPane) {
+                rightPane.classList.add('collapsed');
+                rightPane.classList.remove('active');
+            }
+            updateBackdrop();
         });
     }
 

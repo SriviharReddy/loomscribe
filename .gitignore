@@ -2,6 +2,7 @@ node_modules/
 prompt_cards/
 server.pid
 ssh/
+.env
 
 # Secure host-side JSON database & private DeepSeek API configurations
 data/

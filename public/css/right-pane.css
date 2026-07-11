@@ -624,8 +624,9 @@ input:checked + .slider-toggle:before {
         right: 0;
         bottom: 0;
         width: 320px;
+        max-width: 100%;
         transform: translateX(100%);
-        z-index: 999;
+        z-index: 1005; /* Ensure it lies above backdrop (950) and sidebar (1000) */
         box-shadow: none;
     }
     

@@ -1,4 +1,4 @@
-﻿import { authFetch } from '../auth.js';
+import { authFetch } from '../auth.js';
 import { state } from '../state.js';
 import { safeAsync } from './helpers.js';
 
@@ -138,5 +138,39 @@ export function initInputBar() {
                 body: JSON.stringify({ thinkingMode: newMode })
             });
         }));
+    }
+
+    // Chips Visibility Toggle (gear icon)
+    const toggleChipsBtn = document.getElementById('toggle-chips-btn');
+    const chatConfigRow = document.querySelector('.chat-config-row');
+    if (toggleChipsBtn && chatConfigRow) {
+        // Load initial state from localStorage (default: true)
+        const showChips = localStorage.getItem('loomscribe_show_chips') !== 'false';
+        if (showChips) {
+            chatConfigRow.classList.remove('collapsed');
+            toggleChipsBtn.classList.add('active');
+        } else {
+            // Disable transitions temporarily on load to prevent visual sliding shut
+            chatConfigRow.style.transition = 'none';
+            chatConfigRow.classList.add('collapsed');
+            toggleChipsBtn.classList.remove('active');
+            
+            // Force reflow
+            chatConfigRow.offsetHeight;
+            
+            // Restore transitions
+            chatConfigRow.style.transition = '';
+        }
+
+        toggleChipsBtn.addEventListener('click', () => {
+            const isCollapsed = chatConfigRow.classList.toggle('collapsed');
+            if (isCollapsed) {
+                toggleChipsBtn.classList.remove('active');
+                localStorage.setItem('loomscribe_show_chips', 'false');
+            } else {
+                toggleChipsBtn.classList.add('active');
+                localStorage.setItem('loomscribe_show_chips', 'true');
+            }
+        });
     }
 }
