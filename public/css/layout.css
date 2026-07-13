@@ -481,6 +481,18 @@
     input, textarea, select, .custom-select-trigger, .pm-input, .pm-textarea, .pm-select, #user-input {
         font-size: 16px !important;
     }
+
+    /* Make edit/delete buttons visible on mobile sidebar items where hover is unavailable */
+    .chat-delete-btn,
+    .chat-rename-btn {
+        opacity: 0.5 !important;
+    }
+
+    /* Make them slightly more visible on the active item */
+    .chat-list-item.active .chat-delete-btn,
+    .chat-list-item.active .chat-rename-btn {
+        opacity: 0.8 !important;
+    }
 }
 
 /* ==========================================================================
