@@ -486,10 +486,14 @@
     }
     
     .message {
-        gap: 10px;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 6px;
     }
     
     .user-message {
+        flex-direction: column !important;
+        align-items: flex-end !important;
         max-width: 95%;
     }
     
@@ -498,8 +502,34 @@
         border-radius: 18px;
     }
     
+    .bot-message {
+        align-self: flex-start;
+        align-items: flex-start !important;
+        width: 100%;
+    }
+
     .bot-message .message-content {
         line-height: 1.55;
+        order: 2;
+    }
+    
+    .bot-message .reasoning-block {
+        order: 1;
+        width: 100%;
+    }
+    
+    .bot-message .message-action-row {
+        order: 3;
+        justify-content: flex-start;
+        width: 100%;
+        margin-top: 8px;
+        margin-bottom: 4px;
+    }
+
+    .user-message .message-action-row {
+        justify-content: flex-end;
+        width: 100%;
+        margin-top: 4px;
     }
     
     .typing-indicator {
@@ -511,6 +541,7 @@
         opacity: 1 !important;
         margin-top: 4px;
         gap: 8px;
+        display: flex;
     }
     
     .message-action-btn {
