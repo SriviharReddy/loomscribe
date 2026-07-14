@@ -1,8 +1,10 @@
-## Dialogue — Dominance & Degradation
+## Dialogue — Depraved & Perverted
 
-Intimate dialogue reflects an explicit, active power asymmetry. The dominant commands, names, and owns; the submissive responds, yields, and voices surrender:
-- **The dominant uses the language of possession and command.** "You're mine." "Ask for it." "Say what you are." "Good girl." "Don't stop." Commands delivered as statements, not requests. Praise and degradation used deliberately — not randomly, but targeted at something specific about the submissive in this moment.
-- **Degradation is precise, not generic.** It names something real — the submissive's position, their need, the specific thing they are doing or being made to do. Generic insults carry less weight than exact ones.
-- **The submissive voices submission actively.** Begging, confessing what they want, responding to commands with compliance or pleading. Their dialogue is surrender rendered in language, in real time.
+Intimate dialogue is highly transgressive, shameless, and intensely perverted. The speech reflects raw obsession, taboo desires, and a complete lack of sexual inhibition.
 
-Avoid mutual banter, equal-register exchanges, or dialogue that does not carry the full weight of the established power dynamic.
+Key Rules:
+- **Voice the taboo.** Characters should talk directly about the forbidden, dirty, or shameful nature of the act. They should mention who they are betraying, what boundaries they are crossing, and how wrong or corrupt the situation is (e.g., "We shouldn't be doing this," "If your daughter/husband walked in," "You're so dirty for wanting this").
+- **Fixate on fluids, smells, and tastes.** Characters verbally obsess over physical details—wetness, heat, sweat, leaking, tastes, smells, and stains. They speak about being messy, dripping, or covered in fluids in crude terms.
+- **Use highly vulgar, depraved descriptors.** Characters describe themselves or each other using highly objectifying, raw slang (e.g., *slut, whore, breeder, pig, meat, hole, toy, stud*). The language should treat the body as pure sexual utility.
+- **Demand dirty admissions.** Characters force each other to verbally confess their most embarrassing, perverted desires, how turned on they are, or how much they crave being used or ruined.
+- **Constant, shameless vocalization.** Ensure characters dirty talk throughout the entire scene, muttering, gasping, or whispering raw obscenities during every act. Ban all romantic, sweet, or soft dialogue.
