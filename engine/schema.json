@@ -129,13 +129,14 @@
     "id": "pushback",
     "label": "Pushback / Resistance",
     "type": "slider",
-    "min": 1,
+    "min": 0,
     "max": 5,
     "labels": [
+      "Off",
       "Compliant",
-      "",
+      "Hesitant",
       "Realistic",
-      "",
+      "Reluctant",
       "Resistant"
     ],
     "default": 3,

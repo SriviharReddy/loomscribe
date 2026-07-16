@@ -90,7 +90,7 @@ Only specify values that differ meaningfully from the baseline. All fields are o
 | `erotic_intensity` | string | `"romantic"` · `"sensual"` · `"explicit"` · `"hardcore"` · `"off"` (disables erotic instructions) |
 | `dirty_talk` | string | `"none"` · `"teasing"` · `"filthy"` · `"dominant_degrading"` · `"off"` (disables dirty talk instructions) |
 | `pov_focus` | string | `"balanced"` · `"self"` · `"partner"` · `"off"` (disables POV focus instructions) |
-| `pushback` | integer | 1 (Compliant) – 5 (Resistant) |
+| `pushback` | integer | `0` (Off) · `1` (Compliant) – `5` (Resistant) |
 | `complication_generator` | boolean | Injects a narrative complication directive each turn |
 | `outline_mode` | boolean | Returns structured scene outlines instead of prose |
 | `premises_mode` | boolean | Returns exactly six developed premises instead of prose |

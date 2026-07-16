@@ -10,7 +10,7 @@ let isDirty = false;          // unsaved changes flag
 let savedSnapshot = null;     // JSON snapshot of last-saved form state
 
 // Pushback label map
-const PUSHBACK_LABELS = ['Compliant', 'Hesitant', 'Realistic', 'Reluctant', 'Resistant'];
+const PUSHBACK_LABELS = ['Off', 'Compliant', 'Hesitant', 'Realistic', 'Reluctant', 'Resistant'];
 
 // ─── DOM helpers ──────────────────────────────────────────────────────────────
 
@@ -99,7 +99,7 @@ export function initPresetManager() {
     const pbSlider = el('pm-default-pushback');
     if (pbSlider) {
         pbSlider.addEventListener('input', () => {
-            const idx = parseInt(pbSlider.value, 10) - 1;
+            const idx = parseInt(pbSlider.value, 10);
             el('pm-pushback-val').textContent = `${pbSlider.value} — ${PUSHBACK_LABELS[idx] || ''}`;
         });
     }
@@ -301,7 +301,7 @@ function populateForm(preset) {
 
     const pb = d.pushback !== undefined ? d.pushback : 3;
     el('pm-default-pushback').value = pb;
-    el('pm-pushback-val').textContent = `${pb} — ${PUSHBACK_LABELS[pb - 1] || ''}`;
+    el('pm-pushback-val').textContent = `${pb} — ${PUSHBACK_LABELS[pb] || ''}`;
 
     setPillState(el('pm-toggle-outline'), !!d.outline_mode);
     setPillState(el('pm-toggle-premises'), !!d.premises_mode);
@@ -673,7 +673,7 @@ function populateFormFromSnapshot(snap) {
 
     const pb = d.pushback !== undefined ? d.pushback : 3;
     el('pm-default-pushback').value = pb;
-    el('pm-pushback-val').textContent = `${pb} — ${PUSHBACK_LABELS[pb - 1] || ''}`;
+    el('pm-pushback-val').textContent = `${pb} — ${PUSHBACK_LABELS[pb] || ''}`;
 
     setPillState(el('pm-toggle-outline'), !!d.outline_mode);
     setPillState(el('pm-toggle-premises'), !!d.premises_mode);

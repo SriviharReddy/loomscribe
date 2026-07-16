@@ -559,7 +559,7 @@ export async function renderRightPane(conversation) {
             const paramEl = document.createElement('div');
             paramEl.className = 'param-item';
 
-            const isNarrativeField = ['pov', 'erotic_intensity', 'dirty_talk', 'pov_focus'].includes(item.id);
+            const isNarrativeField = ['pov', 'erotic_intensity', 'dirty_talk', 'pov_focus', 'pushback'].includes(item.id);
             if (proseBypassActive && isNarrativeField) {
                 paramEl.classList.add('disabled');
             }
@@ -600,10 +600,19 @@ export async function renderRightPane(conversation) {
                 slider.max = item.max;
                 slider.step = item.step || 1;
                 slider.value = val;
+                if (proseBypassActive && isNarrativeField) {
+                    slider.disabled = true;
+                }
 
                 // Update text representation
                 const updateValText = (v) => {
-                    if (item.labels) {
+                    if (proseBypassActive && isNarrativeField) {
+                        if (currentOutlineMode) {
+                            valSpan.textContent = "Disabled (Outline Mode)";
+                        } else if (currentPremisesMode) {
+                            valSpan.textContent = "Disabled (Premises Mode)";
+                        }
+                    } else if (item.labels) {
                         const idx = Math.round(v) - item.min;
                         valSpan.textContent = item.labels[idx] || v;
                     } else {

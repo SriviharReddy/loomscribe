@@ -366,7 +366,9 @@ function compilePrompt({ presetId, params, blockOverrides, directorNote }) {
 
     // Add pushback slider mapping
     const pushbackVal = validParams.pushback;
-    if (pushbackVal <= 2) {
+    if (pushbackVal === 0) {
+        // Intentionally empty — pushback is turned off entirely (no instruction).
+    } else if (pushbackVal >= 1 && pushbackVal <= 2) {
         postParts.push("Character Behavior: Receptive and highly compliant. The AI-controlled characters should easily go along with the user character's initiatives, suggestions, and physical advances with minimal hesitation.");
     } else if (pushbackVal === 3) {
         // Intentionally empty — level 3 is the model's natural default; no instruction needed.
