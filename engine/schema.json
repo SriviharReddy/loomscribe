@@ -126,6 +126,13 @@
     "slot": "post_history"
   },
   {
+    "id": "suggest_choices",
+    "label": "Suggest Next Choices",
+    "type": "toggle",
+    "default": false,
+    "slot": "post_history"
+  },
+  {
     "id": "pushback",
     "label": "Pushback / Resistance",
     "type": "slider",

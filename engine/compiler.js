@@ -364,6 +364,11 @@ function compilePrompt({ presetId, params, blockOverrides, directorNote }) {
         postParts.push("Before the scene resolves or escalates cleanly, introduce one specific complication that creates friction. Choose the type that best fits the scene:\n- **External interruption:** A sound from outside the room, a phone notification, footsteps, a door — something that forces a pause or a decision.\n- **Emotional rupture:** A flash of guilt, doubt, or recognition of what they are doing — an internal moment that surfaces visibly and cannot be immediately suppressed.\n- **Physical hesitation:** A body that does not cooperate with intention — hands that stop, a voice that comes out wrong, a physical reaction that reveals something unintended.\n- **Power shift:** A moment where the dynamic between the characters tilts unexpectedly — something said or done that neither anticipated.\nWrite the complication as a scene beat, not an announcement. It must feel earned and specific to these characters in this moment.");
     }
 
+    // If suggest_choices is enabled, append the choices instruction
+    if (validParams.suggest_choices === true) {
+        postParts.push("At the very end of your response, after a divider line (---), provide exactly 3 distinct, numbered choices (1, 2, 3) about how to proceed with the story. Keep each choice brief, specific, and evocative, offering diverse paths for the next scene or character actions.");
+    }
+
     // Add pushback slider mapping
     const pushbackVal = validParams.pushback;
     if (pushbackVal === 0) {

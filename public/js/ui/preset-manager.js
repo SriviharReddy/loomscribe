@@ -105,7 +105,7 @@ export function initPresetManager() {
     }
 
     // Toggle pills
-    ['pm-toggle-outline', 'pm-toggle-premises'].forEach(id => {
+    ['pm-toggle-outline', 'pm-toggle-premises', 'pm-toggle-choices'].forEach(id => {
         const pill = el(id);
         if (!pill) return;
         pill.addEventListener('click', () => togglePill(pill));
@@ -305,6 +305,7 @@ function populateForm(preset) {
 
     setPillState(el('pm-toggle-outline'), !!d.outline_mode);
     setPillState(el('pm-toggle-premises'), !!d.premises_mode);
+    setPillState(el('pm-toggle-choices'), !!d.suggest_choices);
 
     updateWordCountHint(preset.system_body || '');
 
@@ -349,6 +350,7 @@ function resetEditor() {
     el('pm-pushback-val').textContent = '3 — Realistic';
     setPillState(el('pm-toggle-outline'), false);
     setPillState(el('pm-toggle-premises'), false);
+    setPillState(el('pm-toggle-choices'), false);
     updateWordCountHint('');
 
     if (el('pm-search-input')) el('pm-search-input').value = '';
@@ -644,6 +646,7 @@ function collectFormData() {
             pushback: parseInt(el('pm-default-pushback').value, 10),
             outline_mode: el('pm-toggle-outline').classList.contains('on'),
             premises_mode: el('pm-toggle-premises').classList.contains('on'),
+            suggest_choices: el('pm-toggle-choices').classList.contains('on'),
         }
     };
 }
@@ -677,6 +680,7 @@ function populateFormFromSnapshot(snap) {
 
     setPillState(el('pm-toggle-outline'), !!d.outline_mode);
     setPillState(el('pm-toggle-premises'), !!d.premises_mode);
+    setPillState(el('pm-toggle-choices'), !!d.suggest_choices);
 
     updateWordCountHint(snap.system_body || '');
 }
