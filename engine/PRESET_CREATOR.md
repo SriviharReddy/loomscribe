@@ -86,10 +86,10 @@ Only specify values that differ meaningfully from the baseline. All fields are o
 | Key | Type | Valid values |
 |---|---|---|
 | `word_count` | integer | 600 – 3000 (step 100) |
-| `pov` | string | `"third"` · `"first"` · `"author"` |
-| `erotic_intensity` | string | `"romantic"` · `"sensual"` · `"explicit"` · `"hardcore"` |
-| `dirty_talk` | string | `"none"` · `"teasing"` · `"filthy"` · `"dominant_degrading"` |
-| `pov_focus` | string | `"balanced"` · `"self"` · `"partner"` |
+| `pov` | string | `"third"` · `"first"` · `"author"` · `"off"` (disables POV instructions) |
+| `erotic_intensity` | string | `"romantic"` · `"sensual"` · `"explicit"` · `"hardcore"` · `"off"` (disables erotic instructions) |
+| `dirty_talk` | string | `"none"` · `"teasing"` · `"filthy"` · `"dominant_degrading"` · `"off"` (disables dirty talk instructions) |
+| `pov_focus` | string | `"balanced"` · `"self"` · `"partner"` · `"off"` (disables POV focus instructions) |
 | `pushback` | integer | 1 (Compliant) – 5 (Resistant) |
 | `complication_generator` | boolean | Injects a narrative complication directive each turn |
 | `outline_mode` | boolean | Returns structured scene outlines instead of prose |

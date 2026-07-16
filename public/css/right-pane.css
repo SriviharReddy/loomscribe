@@ -247,6 +247,24 @@
     border-color: rgba(56, 189, 248, 0.3);
 }
 
+.custom-select-trigger:disabled {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.custom-select-trigger:disabled:hover {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.param-item.disabled {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
 .custom-select-wrapper.open .custom-select-trigger,
 .custom-select-trigger:focus {
     border-color: var(--accent-color);

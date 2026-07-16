@@ -533,6 +533,15 @@ export async function renderRightPane(conversation) {
         if (systemContainer) systemContainer.innerHTML = '';
         if (postContainer) postContainer.innerHTML = '';
 
+        const getParamVal = (id) => {
+            return conversation.params?.[id] !== undefined
+                ? conversation.params[id]
+                : (preset.defaults?.[id] !== undefined ? preset.defaults[id] : schema.find(s => s.id === id)?.default);
+        };
+        const currentOutlineMode = getParamVal('outline_mode') === true;
+        const currentPremisesMode = getParamVal('premises_mode') === true;
+        const proseBypassActive = currentOutlineMode || currentPremisesMode;
+
         // Dynamically build parameter UI from schema
         for (const item of schema) {
             const container = item.slot === 'system' ? systemContainer : postContainer;
@@ -549,6 +558,11 @@ export async function renderRightPane(conversation) {
 
             const paramEl = document.createElement('div');
             paramEl.className = 'param-item';
+
+            const isNarrativeField = ['pov', 'erotic_intensity', 'dirty_talk', 'pov_focus'].includes(item.id);
+            if (proseBypassActive && isNarrativeField) {
+                paramEl.classList.add('disabled');
+            }
 
             // Parameter Label Row
             const labelRow = document.createElement('div');
@@ -642,7 +656,16 @@ export async function renderRightPane(conversation) {
 
                 // Find active option label
                 const activeOpt = item.options.find(opt => opt.value === val) || item.options[0];
-                const activeLabel = activeOpt ? activeOpt.label : val;
+                let activeLabel = activeOpt ? activeOpt.label : val;
+
+                if (proseBypassActive && isNarrativeField) {
+                    triggerBtn.disabled = true;
+                    if (currentOutlineMode) {
+                        activeLabel = "Disabled (Outline Mode)";
+                    } else if (currentPremisesMode) {
+                        activeLabel = "Disabled (Premises Mode)";
+                    }
+                }
 
                 const triggerText = document.createElement('span');
                 triggerText.className = 'custom-select-trigger-text';

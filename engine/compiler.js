@@ -191,6 +191,10 @@ function compilePrompt({ presetId, params, blockOverrides, directorNote }) {
             forceState('pov_author', true);
             forceState('pov_third', false);
             forceState('pov_first', false);
+        } else if (validParams.pov === 'off') {
+            forceState('pov_third', false);
+            forceState('pov_first', false);
+            forceState('pov_author', false);
         }
 
         // Erotic intensity mapping
@@ -214,6 +218,11 @@ function compilePrompt({ presetId, params, blockOverrides, directorNote }) {
             forceState('erotic_romantic', false);
             forceState('erotic_sensual', false);
             forceState('explicit', false);
+        } else if (validParams.erotic_intensity === 'off') {
+            forceState('erotic_romantic', false);
+            forceState('erotic_sensual', false);
+            forceState('explicit', false);
+            forceState('erotic_hardcore', false);
         }
 
         // Dirty talk mapping
@@ -237,6 +246,11 @@ function compilePrompt({ presetId, params, blockOverrides, directorNote }) {
             forceState('dirty_talk_none', false);
             forceState('dirty_talk_teasing', false);
             forceState('dirty_talk_filthy', false);
+        } else if (validParams.dirty_talk === 'off') {
+            forceState('dirty_talk_none', false);
+            forceState('dirty_talk_teasing', false);
+            forceState('dirty_talk_filthy', false);
+            forceState('dirty_talk_degrading', false);
         }
 
         // POV focus mapping
@@ -252,6 +266,10 @@ function compilePrompt({ presetId, params, blockOverrides, directorNote }) {
             forceState('focus_partner', true);
             forceState('focus_balanced', false);
             forceState('focus_self', false);
+        } else if (validParams.pov_focus === 'off') {
+            forceState('focus_balanced', false);
+            forceState('focus_self', false);
+            forceState('focus_partner', false);
         }
     }
 

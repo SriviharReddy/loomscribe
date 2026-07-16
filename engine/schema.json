@@ -26,6 +26,10 @@
       {
         "value": "author",
         "label": "Omniscient"
+      },
+      {
+        "value": "off",
+        "label": "Off"
       }
     ],
     "default": "third",
@@ -51,6 +55,10 @@
       {
         "value": "hardcore",
         "label": "Hardcore"
+      },
+      {
+        "value": "off",
+        "label": "Off"
       }
     ],
     "default": "explicit",
@@ -76,6 +84,10 @@
       {
         "value": "dominant_degrading",
         "label": "Depraved & Perverted"
+      },
+      {
+        "value": "off",
+        "label": "Off"
       }
     ],
     "default": "teasing",
@@ -97,6 +109,10 @@
       {
         "value": "partner",
         "label": "Partner Reaction"
+      },
+      {
+        "value": "off",
+        "label": "Off"
       }
     ],
     "default": "balanced",
