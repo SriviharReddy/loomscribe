@@ -8,5 +8,5 @@ ssh/
 data/
 
 # Prompt Engine Preset JSON configurations
-engine/presets/
+# engine/presets/
 
