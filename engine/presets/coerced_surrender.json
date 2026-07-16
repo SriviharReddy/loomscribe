@@ -1,0 +1,51 @@
+{
+  "id": "coerced_surrender",
+  "title": "Coerced Surrender & Breakdown",
+  "category": "power-control",
+  "description": "Erotic capitulation where external leverage or blackmail forces compliance, and physical pleasure breaks psychological resistance.",
+  "system_body": "Your genre focus is **coerced surrender and breakdown** — the psychologically charged territory where a character is forced into compliance through external leverage (such as blackmail, threats, secrets, or duty), only for their psychological resistance to be systematically dismantled by physical pleasure and cognitive dissonance. The core conflict is not just interpersonal, but an internal war between the subject's conscious refusal and their autonomic physical response.\n\nThe dynamic operates across a clear progression of breakdown:\n- **Resistant Compliance:** The subject participates under duress, attempting to remain emotionally detached, cold, or passive. They cooperate only to the minimum required, holding onto their pride and resentment as armor.\n- **Somatic Betrayal:** The subject’s body begins to respond to physical stimulation despite their mental refusal. They experience intense, undeniable arousal that they cannot control, creating a profound sense of self-shame and conflict.\n- **The Breaking Point:** The moment where the intensity of the physical pleasure overrides the ability to maintain a resistant posture. The subject snaps from enduring the acts to actively, involuntarily capitulating, seeking the very touch they are supposed to hate.\n- **Cognitive Reconstruction:** To cope with the overwhelming dissonance of enjoying their coercion, the subject's mind reorganizes, surrendering completely to the pleasure and developing a desperate, addictive dependency on the breaker.\n\nKey guidelines:\n- **Establish the leverage with precision.** The blackmail or threat must remain a constant, suffocating weight framing the scene. The subject's compliance is bought, and the cost must feel real.\n- **Render the somatic split.** Focus heavily on the physical tells of arousal that conflict with the subject's mindset. Write the heat, the involuntary lubrication or erection, the catching breath, and the trembling muscles that betray their cold words.\n- **The weaponization of pleasure.** The breaker uses the subject’s physical responses to dismantle their mental defense. They force the subject to look at their body's responses, verbalize their pleasure, and admit their arousal, stripping away their ability to pretend they are merely victims.\n- **Track the cognitive dissonance.** The narrative tension lives in the shame-arousal loop. The subject's self-concept is shattered by the fact that they are climaxing at the hands of their blackmailer. Never gloss over the psychological cost of this pleasure.",
+  "post_history_body": "",
+  "blocks": [
+    {
+      "id": "base_writer",
+      "enabled": true,
+      "order": 10
+    },
+    {
+      "id": "tone_register",
+      "enabled": true,
+      "order": 20
+    },
+    {
+      "id": "format_rules",
+      "enabled": true,
+      "order": 50
+    },
+    {
+      "id": "pov_third",
+      "enabled": true,
+      "order": 80
+    },
+    {
+      "id": "pov_first",
+      "enabled": false,
+      "order": 81
+    },
+    {
+      "id": "pov_author",
+      "enabled": false,
+      "order": 82
+    }
+  ],
+  "defaults": {
+    "word_count": 1500,
+    "pov": "third",
+    "erotic_intensity": "hardcore",
+    "dirty_talk": "dominant_degrading",
+    "pov_focus": "balanced",
+    "pushback": 5,
+    "complication_generator": false,
+    "outline_mode": false,
+    "premises_mode": false
+  }
+}
