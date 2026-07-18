@@ -1,4 +1,4 @@
-﻿import { authFetch } from '../auth.js';
+import { authFetch } from '../auth.js';
 import { state, escapeHtml } from '../state.js';
 import {
     buildApiPayload,
@@ -1077,13 +1077,7 @@ export function initExportButton() {
             }
 
             const title = conv.title || 'Untitled Conversation';
-            const systemPrompt = getSystemPromptContentSync();
-
-            let mdContent = `# ${title}\n\n`;
-            if (systemPrompt) {
-                mdContent += `> **System Prompt:** ${systemPrompt}\n\n`;
-            }
-            mdContent += `---\n\n`;
+            let mdContent = `# ${title}\n\n---\n\n`;
 
             activeMessages.forEach(msg => {
                 if (msg.role !== 'system') {

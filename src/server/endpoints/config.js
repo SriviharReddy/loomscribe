@@ -1,11 +1,6 @@
 const { readDb, writeDb } = require('../db');
 
 function registerConfigRoutes(app) {
-    // --- API: GET /api/health ---
-    app.get('/api/health', (req, res) => {
-        res.json({ status: 'OK', uptime: process.uptime() });
-    });
-
     // --- API: Configurations & Key Management ---
     app.get('/api/config', (req, res) => {
         const db = readDb();
